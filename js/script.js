@@ -24,3 +24,23 @@ function passagemParametro(parametro){
 }
 
 parametros.forEach(passagemParametro);
+
+// Exibir pergunta //
+
+const perguntas = document.querySelectorAll('.perguntas button');
+
+function ativarPergunta (event) {
+    const pergunta = event.currentTarget;
+    const controls = pergunta.getAttribute('aria-controls');
+    const resposta = document.getElementById(controls);
+
+    resposta.classList.toggle('expandida');
+    const ativa = resposta.classList.contains('expandida');
+    pergunta.setAttribute('aria-expanded',ativa);
+}
+
+function eventoPergunta (pergunta) {
+    pergunta.addEventListener('click',ativarPergunta);
+};
+
+perguntas.forEach(eventoPergunta);
